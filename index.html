@@ -3,96 +3,276 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- You are data, and also Your data -->
         <title>URData</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="assets/css/styling.css" />
     </head>
     <body>
-        <main>
 
-            <!-- Navbar that will go at the top of the screen,
-            these are tentative categories-->
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#what-is-collected">What's Being Collected</a></li>
-                    <li><a href="#who-is-collecting">Who's Collecting It</a></li>
-                    <li><a href="#why-it-matters">Why It Matters</a></li>
-                    <li><a href="#take-action">Take Action</a></li>
-                </ul>
-            </nav>
+        <!-- NAV NAV NAV NAV NAV NAV NAV NAV NAV NAV NAV NAV NAV NAV NAV NAV NAV NAV NAV -->
+        <nav id="navbar">
+            <a href="#" id="nav-eye-link" class="nav-eye-link" aria-label="Back to top">
+                <svg id="nav-eye-svg" class="eye-svg" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <clipPath id="nav-eye-clip">
+                            <path d="M 5,30 C 27,8 93,8 115,30 C 93,52 27,52 5,30 Z" />
+                        </clipPath>
+                    </defs>
+                    <path class="eye-sclera"    d="M 5,30 C 27,8  93,8  115,30 C 93,52 27,52 5,30 Z" />
+                    <path class="eye-lid-shade" d="M 5,30 C 27,8  93,8  115,30 C 80,18 40,18 5,30 Z" />
+                    <g clip-path="url(#nav-eye-clip)">
+                        <circle class="eye-iris"      cx="60" cy="30" r="17" />
+                        <circle class="eye-iris-ring" cx="60" cy="30" r="17" />
+                        <circle class="eye-iris-mid"  cx="60" cy="30" r="11" />
+                        <circle id="nav-pupil"        class="eye-pupil" cx="60" cy="30" r="8" />
+                        <ellipse id="nav-highlight"   class="eye-gleam" cx="55" cy="25" rx="3.5" ry="2.5" />
+                    </g>
+                    <path class="eye-outline"   d="M 5,30 C 27,8  93,8  115,30 C 93,52 27,52 5,30 Z" />
+                    <path class="eye-lid-line"  d="M 5,30 C 27,8  93,8  115,30" />
+                </svg>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#collected">Collected Data</a></li>
+                <li><a href="#collectors">Collectors</a></li>
+                <li><a href="#so-what">So What?</a></li>
+                <li><a href="#now-what">Now What?</a></li>
+                <li><a href="#other">Other Section</a></li> <!-- Will add another section if time permits -->
+                <li><a href="#sources">External Sources</a></li>
+            </ul>
+        </nav>
 
-            <!-- Home Section -->
-            <section id="home">
-                <h1>UR Data</h1>
-                <p>
-                    Every time you scroll, search, or click, someone is watching. Something
-                    is cashing in on your every digital move.
-                    This site breaks down how tech corporations collect your personal data,
-                    why it's a problem, and what you can do about it.
+        <!-- ================================================
+             SECTION 1 — HERO
+             ================================================ -->
+        <section id="hero" class="full-section">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <h1 id="hero-title" class="hero-title"></h1>
+
+                <div id="hero-eye-wrap" class="hero-eye-wrap">
+                    <svg id="hero-eye-svg" class="eye-svg hero-eye-svg" viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <clipPath id="hero-eye-clip">
+                                <path d="M 10,60 C 55,16 185,16 230,60 C 185,104 55,104 10,60 Z" />
+                            </clipPath>
+                        </defs>
+                        <path class="eye-sclera"    d="M 10,60 C 55,16 185,16 230,60 C 185,104 55,104 10,60 Z" />
+                        <path class="eye-lid-shade" d="M 10,60 C 55,16 185,16 230,60 C 165,36 75,36  10,60 Z" />
+                        <g clip-path="url(#hero-eye-clip)">
+                            <circle class="eye-iris"      cx="120" cy="60" r="24" />
+                            <circle class="eye-iris-ring" cx="120" cy="60" r="24" />
+                            <circle class="eye-iris-mid"  cx="120" cy="60" r="16" />
+                            <circle id="hero-pupil"       class="eye-pupil" cx="120" cy="60" r="11" />
+                            <ellipse id="hero-highlight"  class="eye-gleam" cx="113" cy="54" rx="4.5" ry="3" />
+                        </g>
+                        <path class="eye-outline"   d="M 10,60 C 55,16 185,16 230,60 C 185,104 55,104 10,60 Z" />
+                        <path class="eye-lid-line"  d="M 10,60 C 55,16 185,16 230,60" />
+                        <!-- Invisible click zone — exact eye shape -->
+                        <path id="hero-eye-clickzone" d="M 10,60 C 55,16 185,16 230,60 C 185,104 55,104 10,60 Z"
+                              fill="transparent" style="cursor:pointer; pointer-events:fill;" />
+                    </svg>
+                </div>
+
+                <p class="hero-sub hero-sub1">
+                    Your data &mdash; habits, identity, and life &mdash; is no longer private. You're data. 
                 </p>
-                <a href="#what-is-collected">Learn More</a>
-            </section>
+                <a href="#summary" class="hero-sub hero-sub2 scroll-link">
+                    Ever wondered what price you're really paying to use your tech?
+                </a>
+            </div>
+        </section>
 
-            <!-- Problem Overview Section -->
-            <section id="overview">
-                <h2>The Problem</h2>
-                <p>
-                    Most people don't realize the sheer scale of data being collected about them every day.
-                    Your location, habits, relationships, and beliefs are all being harvested,
-                    stored, and sold without your meaningful consent.
-                </p>
-                <p>
-                    This is a serious ethical issue that violates people's privacy, and it only continues to worsen.
-                </p>
-            </section>
-
-            <!-- Quick Stats, need to find actual facts -->
-            <section id="stats">
-                <h2>By the Numbers</h2>
-                <ul>
-                    <li>Important statistic goes here (need to find several)</li>
-                    <li>Another statistic goes here, bolding will be used.</li>
-                    <li>Another statistic, interesting styling can be used here.</li>
-                </ul>
-            </section>
-
-            <!-- Preview of Site Sections, similar
-            functionality to navbar, might reconsider -->
-            <section id="site-sections">
-                <h2>What You'll Find Here</h2>
-
-                <article>
-                    <h3>What's Being Collected</h3>
-                    <p>A breakdown of the types of data companies gather, from your search history to physical location.</p>
-                    <a href="#what-is-collected">Explore</a>
+        <!-- ================================================
+             SECTION 2 — SUMMARY
+             ================================================ -->
+        <section id="summary" class="full-section">
+            <div class="section-inner">
+                <h2 id="summary-title"
+                    class="section-title typing-title"
+                    data-text="What is your worth?"></h2>
+                <article class="summary-card">
+                    <h3 class="summary-card-title">Overview</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus dolore 
+                        blanditiis unde aspernatur, repellat cupiditate ratione. A non eius 
+                        temporibus aperiam labore vero quas tempora perferendis nam fugit. 
+                        Tempora repellendus culpa accusamus placeat provident. Quis rerum iure 
+                        itaque reprehenderit tempora veritatis, laudantium dolor, neque quidem quae 
+                        unde animi, voluptas dolore!
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum nobis iste 
+                        fugit tempora incidunt porro, facere omnis rem quasi corrupti et vitae 
+                        repellendus distinctio pariatur nulla? Suscipit dolore in facere laudantium 
+                        atque nobis earum consequuntur ipsa aut, perspiciatis fuga aliquid, culpa eaque, 
+                        et minus eos saepe libero odit veniam quis.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus architecto eos 
+                        similique repudiandae tempora et cupiditate, provident labore est, magnam distinctio 
+                        quis sapiente quidem, perferendis a quibusdam vero numquam! Ex, illum enim quibusdam u
+                        llam neque tempore perferendis beatae perspiciatis, minima nam deleniti dicta commodi 
+                        architecto itaque excepturi voluptatum cum? Maxime eveniet doloribus quo impedit voluptatem.
+                    </p>
                 </article>
+            </div>
+        </section>
 
-                <article>
-                    <h3>Who's Collecting It</h3>
-                    <p>A look at the major players: Google, Meta, data brokers, and more. Also, what their specific practices are.</p>
-                    <a href="#who-is-collecting">Explore</a>
-                </article>
+        <!-- ================================================
+             SECTION 3 — CAMERA NAVIGATOR
+             ================================================ -->
+        <section id="navigator" class="full-section">
+            <div class="section-inner navigator-inner">
 
-                <article>
-                    <h3>Why It Matters</h3>
-                    <p>The real-world consequences: manipulation, discrimination, surveillance, and loss of autonomy.</p>
-                    <a href="#why-it-matters">Explore</a>
-                </article>
+                <!-- Left: Camera Lens -->
+                <div class="camera-side">
+                    <div class="camera-container">
+                        <svg id="camera-svg" viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <!-- Outermost lens ring -->
+                                <radialGradient id="lg1" cx="38%" cy="38%">
+                                    <stop offset="0%"   stop-color="#5a1a9e" />
+                                    <stop offset="55%"  stop-color="#280055" />
+                                    <stop offset="100%" stop-color="#120025" />
+                                </radialGradient>
+                                <!-- Mid lens ring -->
+                                <radialGradient id="lg2" cx="35%" cy="35%">
+                                    <stop offset="0%"   stop-color="#6e22b8" />
+                                    <stop offset="50%"  stop-color="#320070" />
+                                    <stop offset="100%" stop-color="#180038" />
+                                </radialGradient>
+                                <!-- Inner lens ring -->
+                                <radialGradient id="lg3" cx="36%" cy="36%">
+                                    <stop offset="0%"   stop-color="#4a1280" />
+                                    <stop offset="60%"  stop-color="#1e0044" />
+                                    <stop offset="100%" stop-color="#0a0018" />
+                                </radialGradient>
+                            </defs>
 
-                <article>
-                    <h3>Take Action</h3>
-                    <p>Practical steps you can take today to protect your data and push back against exploitative practices.</p>
-                    <a href="#take-action">Explore</a>
-                </article>
+                            <!-- Outer body -->
+                            <circle cx="220" cy="220" r="215" fill="#0e0020" stroke="#6020b0" stroke-width="2.5" />
+                            <!-- Label ring divider -->
+                            <circle cx="220" cy="220" r="205" fill="none" stroke="#7030c0" stroke-width="0.8" opacity="0.6" />
+                            <!-- Lens bezel ring -->
+                            <circle cx="220" cy="220" r="152" fill="#1a0038" stroke="#8040d0" stroke-width="2.5" />
 
-            </section>
+                            <!-- Lens layers (glass effect) -->
+                            <circle cx="220" cy="220" r="150" fill="url(#lg1)" />
+                            <!-- Subtle border between rings -->
+                            <circle cx="220" cy="220" r="150" fill="none" stroke="#9050e0" stroke-width="1" opacity="0.4" />
+                            <circle cx="220" cy="220" r="112" fill="url(#lg2)" />
+                            <circle cx="220" cy="220" r="112" fill="none" stroke="#7838c8" stroke-width="1" opacity="0.5" />
+                            <circle cx="220" cy="220" r="74"  fill="url(#lg3)" />
+                            <circle cx="220" cy="220" r="74"  fill="none" stroke="#5828a0" stroke-width="1" opacity="0.6" />
+                            <!-- Deep center (aperture) -->
+                            <circle cx="220" cy="220" r="40"  fill="#080012" />
+                            <circle cx="220" cy="220" r="40"  fill="none" stroke="#401080" stroke-width="1" opacity="0.7" />
 
-            <!-- Footer -->
-            <footer>
-                <p>&copy; 2026 me, created as part of an ethics project on data privacy</p>
-            </footer>
-        </main>
+                            <!-- Lens highlights (glass reflection) -->
+                            <ellipse cx="190" cy="188" rx="30" ry="18"
+                                     fill="white" opacity="0.07"
+                                     transform="rotate(-35, 190, 188)" />
+                            <ellipse cx="196" cy="194" rx="14" ry="8"
+                                     fill="white" opacity="0.13"
+                                     transform="rotate(-35, 196, 194)" />
+                            <ellipse cx="200" cy="198" rx="5" ry="3"
+                                     fill="white" opacity="0.22"
+                                     transform="rotate(-35, 200, 198)" />
 
+                            <!-- Tick marks (populated by JS) -->
+                            <g id="lens-ticks"></g>
+
+                            <!-- Curved labels (populated by JS) -->
+                            <g id="lens-labels"></g>
+
+                            <!-- Recording dot — upper-left outer ring, between I'm Lucky and Collected Data -->
+                            <circle id="rec-dot" cx="220" cy="220" r="9" fill="#ff1010" />
+                            <circle cx="245" cy="220" r="8" fill="none" stroke="#ff1010"
+                                    stroke-width="1" opacity="0.2" />
+                        </svg>
+
+                        <!-- REC badge overlay -->
+                        <div class="rec-badge">
+                            <span class="rec-dot-blink"></span>
+                            <span class="rec-text">REC</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Ordered List -->
+                <div class="nav-list-side">
+                    <p class="suggested-path">// Suggested reading order:</p>
+                    <ol class="section-list" id="section-list">
+                        <li data-target="#collected">
+                            <span class="s-name">Collected Data</span>
+                            <span class="s-teaser">What they know about you might surprise you.</span>
+                        </li>
+                        <li data-target="#collectors">
+                            <span class="s-name">Collectors</span>
+                            <span class="s-teaser">The faces behind the apparatus of data harvesting.</span>
+                        </li>
+                        <li data-target="#so-what">
+                            <span class="s-name">So What?</span>
+                            <span class="s-teaser">Surveillance doesn't stay digital for long.</span>
+                        </li>
+                        <li data-target="#now-what">
+                            <span class="s-name">Now What?</span>
+                            <span class="s-teaser">The gap between knowing and doing something about it.</span>
+                        </li>
+                        <li data-target="#other">
+                            <span class="s-name">Other Section</span>
+                            <span class="s-teaser">More of the picture, still being uncovered.</span>
+                        </li>
+                        <li data-target="#sources">
+                            <span class="s-name">External Sources</span>
+                            <span class="s-teaser">Don't take our word for it.</span>
+                        </li>
+                    </ol>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================================================
+             FOOTER
+             ================================================ -->
+        <footer id="footer">
+            <div class="footer-inner">
+
+                <button id="back-to-top" class="fingerprint-btn" aria-label="Back to top">
+                    <svg viewBox="0 0 60 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M30,6  C16,6  5,17  5,31 C5,42  9,51  17,57 C21,61 26,64 30,65"
+                              fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M30,6  C44,6  55,17 55,31 C55,42 51,51 43,57 C39,61 34,64 30,65"
+                              fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M30,12 C19,12 11,21 11,31 C11,40 15,48 21,53"
+                              fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M30,12 C41,12 49,21 49,31 C49,40 45,48 39,53"
+                              fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M30,18 C23,18 17,24 17,31 C17,38 21,44 27,48"
+                              fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M30,18 C37,18 43,24 43,31 C43,38 39,44 33,48"
+                              fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M30,24 C26,24 22,27 22,31 C22,36 25,40 30,43"
+                              fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M30,24 C34,24 38,27 38,31 C38,36 35,40 30,43"
+                              fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+
+                <div class="footer-text">
+                    <p class="footer-credit">&copy; 2026 lneis1 &mdash; created as part of an ethics project on data privacy.</p>
+                    <p class="footer-statement">No user data was collected in the making of this site.</p>
+                    <p class="footer-disclaimer">For educational purposes only. &nbsp;|&nbsp;
+                        <a href="https://github.com/lneis1-bit/URdata" target="_blank" rel="noopener" class="footer-gh-link">View on GitHub</a>
+                    </p>
+                </div>
+
+            </div>
+        </footer>
+
+        <script src="assets/js/script.js"></script>
     </body>
 </html>
