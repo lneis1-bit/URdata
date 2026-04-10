@@ -6,7 +6,7 @@ const SVG_NS = 'http://www.w3.org/2000/svg';
 
 // Section definitions (id matches anchor targets in HTML)
 const SECTIONS = [
-    { id: 'collected',  ringLabel: 'Collected Data'  },
+    { id: 'collected',  ringLabel: 'Collected Data',  url: 'pages/collected.html' },
     { id: 'collectors', ringLabel: 'Collectors'       },
     { id: 'so-what',    ringLabel: 'So What?'         },
     { id: 'now-what',   ringLabel: 'Now What?'        },
@@ -236,6 +236,10 @@ new IntersectionObserver(([entry]) => {
 
 listItems.forEach(item => {
     item.addEventListener('click', () => {
+        if (item.dataset.url) {
+            window.location.href = item.dataset.url;
+            return;
+        }
         const el = document.querySelector(item.dataset.target);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
     });
@@ -322,15 +326,20 @@ function handleLensSelect(item, clickedGroup) {
     setTimeout(() => {
         allLabels.forEach(l => l.classList.remove('dimmed', 'selected'));
 
-        let targetId = item.id;
+        let target = item;
 
         // "I'm Lucky" → pick a random section
-        if (!targetId) {
-            const picks = SECTIONS.filter(s => s.id);
-            targetId = picks[Math.floor(Math.random() * picks.length)].id;
+        if (!target.id && !target.url) {
+            const picks = SECTIONS.filter(s => s.id || s.url);
+            target = picks[Math.floor(Math.random() * picks.length)];
         }
 
-        const el = document.getElementById(targetId);
+        // Navigate to a separate page or scroll to an anchor
+        if (target.url) {
+            window.location.href = target.url;
+            return;
+        }
+        const el = document.getElementById(target.id);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
     }, 880);
 }
