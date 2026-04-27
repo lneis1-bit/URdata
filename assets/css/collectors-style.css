@@ -1,0 +1,636 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:ital,wght@0,300;0,400;0,600;1,300&display=swap');
+
+/* ============================================================
+   CSS CUSTOM PROPERTIES
+   ============================================================ */
+:root {
+    --bg-primary:    #080010;
+    --bg-secondary:  #0d0018;
+    --bg-card:       #130026;
+    --bg-card-hover: #1c0038;
+    --text-primary:  #f0edf8;
+    --text-secondary:#8a88aa;
+    --text-dim:      #484460;
+
+    --accent:        #7a30ff;
+    --accent-bright: #a060ff;
+    --accent-dim:    rgba(120, 50, 255, 0.10);
+    --accent-glow:   rgba(120, 50, 255, 0.38);
+    --accent-line:   #4e1888;
+
+    --red:           #ff1a1a;
+    --red-glow:      rgba(255, 26, 26, 0.45);
+
+    --font-mono: 'Share Tech Mono', 'Courier New', monospace;
+    --font-body: 'Inter', 'Segoe UI', sans-serif;
+
+    --nav-h:    60px;
+    --header-h: 68px;
+    --ease:     0.3s ease;
+
+    --bubble-size: 165px;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-line) var(--bg-secondary);
+}
+
+::-webkit-scrollbar          { width: 5px; }
+::-webkit-scrollbar-track    { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb    { background: var(--accent-line); border-radius: 3px; }
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.72;
+    overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+#navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--nav-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    background: rgba(8, 0, 16, 0.82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(122, 48, 255, 0.14);
+    z-index: 1000;
+}
+
+.nav-eye-link { flex-shrink: 0; display: flex; align-items: center; cursor: pointer; }
+
+#nav-eye-svg {
+    width: 72px; height: 36px;
+    filter: drop-shadow(0 0 5px var(--red-glow));
+    transition: filter var(--ease);
+}
+#nav-eye-svg:hover { filter: drop-shadow(0 0 10px var(--red-glow)); }
+
+.nav-links {
+    display: flex; list-style: none; flex: 1;
+    justify-content: space-evenly; padding-left: 2rem;
+}
+
+.nav-links a {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: rgba(235, 235, 255, 0.88);
+    position: relative; padding-bottom: 3px;
+    transition: color var(--ease);
+}
+
+.nav-links a::after {
+    content: ''; position: absolute;
+    bottom: 0; left: 0; width: 0; height: 1px;
+    background: var(--accent-bright);
+    transition: width 0.35s ease;
+}
+
+.nav-links a:hover              { color: var(--accent-bright); }
+.nav-links a:hover::after       { width: 100%; }
+.nav-links a.nav-current        { color: var(--accent-bright); }
+.nav-links a.nav-current::after { width: 100%; opacity: 0.5; }
+
+/* ── Eye SVG shared styles ── */
+.eye-sclera    { fill: #c0c0cc; }
+.eye-lid-shade { fill: #484460; opacity: 0.45; }
+.eye-iris      { fill: #b00000; }
+.eye-iris-ring { fill: none; stroke: #780000; stroke-width: 2.5; }
+.eye-iris-mid  { fill: none; stroke: #860000; stroke-width: 1; opacity: 0.6; }
+.eye-pupil     { fill: #0a000c; }
+.eye-gleam     { fill: white; opacity: 0.62; }
+.eye-outline   { fill: none; stroke: #383848; stroke-width: 1.5; }
+.eye-lid-line  { fill: none; stroke: #545468; stroke-width: 2; }
+
+/* ============================================================
+   FIXED SUBHEADER
+   ============================================================ */
+#collectors-header {
+    position: fixed;
+    top: var(--nav-h); left: 0; right: 0;
+    height: var(--header-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    background: rgba(8, 0, 16, 0.84);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(122, 48, 255, 0.16);
+    z-index: 100;
+}
+
+.header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.header-title-link { text-decoration: none; color: inherit; }
+
+.header-title {
+    font-family: var(--font-mono);
+    font-size: clamp(0.95rem, 2vw, 1.25rem);
+    color: var(--text-primary);
+    letter-spacing: 0.04em;
+    text-shadow: 0 0 20px var(--accent-glow);
+    white-space: nowrap;
+}
+
+.header-instruction {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    color: var(--text-primary);
+    letter-spacing: 0.06em;
+    opacity: 0.75;
+}
+
+/* ── Dropdown ── */
+.dropdown-wrap { position: relative; }
+
+.dropdown-toggle {
+    display: flex; align-items: center; gap: 0.45rem;
+    background: rgba(122, 48, 255, 0.18);
+    border: 1px solid rgba(122, 48, 255, 0.55);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    padding: 0.55rem 1.3rem;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(122, 48, 255, 0.18);
+    transition: background var(--ease), border-color var(--ease);
+}
+
+.dropdown-toggle:hover,
+.dropdown-toggle[aria-expanded="true"] {
+    background: rgba(122, 48, 255, 0.30);
+    border-color: rgba(160, 96, 255, 0.75);
+}
+
+.dropdown-arrow {
+    font-size: 0.75rem;
+    transition: transform var(--ease);
+    display: inline-block;
+}
+
+.dropdown-toggle[aria-expanded="true"] .dropdown-arrow { transform: rotate(180deg); }
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px); right: 0;
+    min-width: 240px;
+    background: rgba(13, 0, 24, 0.97);
+    border: 1px solid rgba(122, 48, 255, 0.28);
+    border-radius: 8px;
+    list-style: none;
+    padding: 0.35rem 0;
+    z-index: 200;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.6), 0 0 30px rgba(100,40,200,0.12);
+    backdrop-filter: blur(12px);
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.dropdown-menu.open { display: block; }
+
+.dropdown-menu li a {
+    display: block;
+    padding: 0.5rem 1.1rem;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    color: rgba(220, 215, 255, 0.82);
+    transition: color var(--ease), background var(--ease), padding-left 0.2s ease;
+}
+
+.dropdown-menu li a:hover {
+    color: var(--text-primary);
+    background: rgba(122, 48, 255, 0.14);
+    padding-left: 1.5rem;
+}
+
+.dropdown-menu li a.active {
+    color: var(--accent-bright);
+}
+
+/* ============================================================
+   SECTION 1 — BUBBLE SELECTOR
+   ============================================================ */
+#bubble-section {
+    position: relative;
+    height: 100vh;
+    padding-top: calc(var(--nav-h) + var(--header-h));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* The invisible-walled arena */
+#bubble-arena {
+    position: relative;
+    width: calc(100% - 5rem);
+    height: calc(100vh - var(--nav-h) - var(--header-h) - 3rem);
+}
+
+/* ── Individual bubble ── */
+.bubble {
+    position: absolute;
+    left: 0; top: 0;
+    will-change: transform;
+    cursor: pointer;
+    /* No transition here — physics moves this via JS transform */
+}
+
+/* Visual layer — all styling + transitions live here */
+.bubble-body {
+    width:  var(--bubble-size);
+    height: var(--bubble-size);
+    border-radius: 50%;
+    background: radial-gradient(circle at 38% 35%,
+        rgba(90, 35, 175, 0.70) 0%,
+        rgba(45, 12, 100, 0.60) 55%,
+        rgba(18, 3, 45,  0.52) 100%
+    );
+    border: 1.5px solid rgba(122, 48, 255, 0.55);
+    box-shadow:
+        0 0 14px rgba(122, 48, 255, 0.28),
+        inset 0 0 18px rgba(60, 0, 120, 0.40);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition:
+        transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.3s ease,
+        filter 0.3s ease,
+        opacity 0.55s ease,
+        border-color 0.3s ease;
+}
+
+/* Hover — scale up slightly */
+.bubble:hover .bubble-body {
+    transform: scale(1.07);
+    border-color: rgba(180, 120, 255, 0.75);
+    box-shadow:
+        0 0 22px rgba(122, 48, 255, 0.50),
+        0 0 45px rgba(122, 48, 255, 0.22),
+        inset 0 0 18px rgba(80, 0, 150, 0.45);
+}
+
+/* Swell on click */
+.bubble-body.swelling {
+    transform: scale(1.42) !important;
+    border-color: rgba(200, 160, 255, 0.90) !important;
+    box-shadow:
+        0 0 35px rgba(122, 48, 255, 0.65),
+        0 0 70px rgba(122, 48, 255, 0.30),
+        inset 0 0 25px rgba(100, 0, 200, 0.55) !important;
+}
+
+/* Persistent selection highlight */
+.bubble-body.selected {
+    border-color: rgba(200, 155, 255, 0.88);
+    box-shadow:
+        0 0 0 2px rgba(160, 96, 255, 0.38),
+        0 0 28px rgba(122, 48, 255, 0.55),
+        0 0 55px rgba(122, 48, 255, 0.22),
+        inset 0 0 22px rgba(80, 0, 160, 0.50);
+}
+
+/* Brief glow pulse on collision or wall bounce */
+.bubble-body.flash {
+    border-color: rgba(210, 180, 255, 0.82) !important;
+    box-shadow:
+        0 0 26px rgba(160, 96, 255, 0.58),
+        0 0 52px rgba(122, 48, 255, 0.26),
+        inset 0 0 22px rgba(110, 0, 210, 0.48) !important;
+}
+
+/* Dim non-selected bubbles during selection */
+.bubble-body.dimmed {
+    opacity: 0.28 !important;
+    filter: brightness(0.5);
+}
+
+/* ── Bubble label ── */
+.bubble-label {
+    font-family: var(--font-mono);
+    font-size: 1.25rem;
+    letter-spacing: 0.06em;
+    text-align: center;
+    color: #ffffff;
+    text-shadow:
+        0 0 10px rgba(180, 130, 255, 0.85),
+        0 0 22px rgba(122, 48, 255, 0.55);
+    line-height: 1.35;
+    padding: 0 14px;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Logo support (for when real logos replace text labels) */
+.bubble-logo {
+    width: 58%;
+    height: 58%;
+    object-fit: contain;
+    /* tints any logo to the purple monochrome palette */
+    filter: brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(240deg) opacity(0.85);
+    pointer-events: none;
+    user-select: none;
+}
+
+/* ── Spark particles (appended to body by JS) ── */
+.spark {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition:
+        transform 0.5s ease-out,
+        opacity   0.5s ease-out;
+}
+
+/* ============================================================
+   SECTION 2 — COMPANY DETAIL
+   ============================================================ */
+#detail-section {
+    min-height: 100vh;
+    padding-top: calc(var(--nav-h) + var(--header-h) + 3rem);
+    padding-bottom: 5rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+#detail-wrap {
+    width: 100%;
+    max-width: 1100px;
+    padding: 0 2rem;
+}
+
+/* Placeholder state */
+#detail-placeholder {
+    text-align: center;
+    padding: 7rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    transition: opacity 0.3s ease;
+}
+
+.placeholder-label {
+    font-family: var(--font-mono);
+    font-size: 3rem;
+    letter-spacing: 0.12em;
+}
+
+.placeholder-text {
+    font-family: var(--font-mono);
+    font-size: 2rem;
+    color: rgba(140, 130, 180, 0.55);
+    letter-spacing: 0.04em;
+}
+
+/* Company card */
+.company-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(122, 48, 255, 0.22);
+    border-radius: 12px;
+    padding: 2rem 2.4rem;
+    box-shadow: 0 0 50px rgba(100, 40, 200, 0.10);
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+    pointer-events: none;
+}
+
+.company-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.company-card:hover {
+    border-color: rgba(160, 96, 255, 0.40);
+    box-shadow: 0 8px 50px rgba(100, 40, 200, 0.20);
+}
+
+/* Content fade transition */
+#card-content {
+    transition: opacity 0.2s ease;
+}
+
+#card-content.fading { opacity: 0; }
+
+/* Card elements */
+.company-name {
+    font-family: var(--font-mono);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    color: var(--text-primary);
+    letter-spacing: 0.03em;
+    text-shadow: 0 0 18px var(--accent-glow);
+}
+
+.card-divider {
+    border: none;
+    border-top: 1px solid rgba(122, 48, 255, 0.12);
+    margin: 1.3rem 0;
+}
+
+.card-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.section-label {
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #38c8c0;
+    opacity: 0.9;
+}
+
+.card-section p {
+    font-size: 0.975rem;
+    color: rgba(200, 195, 230, 0.88);
+    line-height: 1.82;
+}
+
+/* Facts list */
+.facts-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.facts-list li {
+    display: flex;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: rgba(200, 195, 230, 0.86);
+    line-height: 1.7;
+}
+
+.facts-list li::before {
+    content: '▸';
+    color: var(--accent-bright);
+    font-size: 0.75rem;
+    flex-shrink: 0;
+    padding-top: 0.18rem;
+}
+
+.facts-list strong { color: var(--text-primary); font-weight: 600; }
+.facts-list em     { color: rgba(210, 205, 245, 0.80); font-style: italic; }
+
+/* Sources */
+.sources-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.sources-list li {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.sources-list li::before {
+    content: '→ ';
+    color: var(--accent);
+    font-family: var(--font-mono);
+}
+
+.source-link {
+    color: var(--accent-bright);
+    position: relative;
+    padding-bottom: 1px;
+    transition: color var(--ease);
+}
+
+.source-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 1px;
+    background: var(--accent-bright);
+    transition: width 0.32s ease;
+}
+
+.source-link:hover               { color: var(--text-primary); }
+.source-link:hover::after        { width: 100%; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+#footer {
+    padding: 2.5rem;
+    border-top: 1px solid rgba(122, 48, 255, 0.13);
+    background: var(--bg-secondary);
+}
+
+.footer-inner {
+    max-width: 1120px; margin: 0 auto;
+    min-height: 85px; display: flex; align-items: center;
+    justify-content: center; gap: 2rem;
+}
+
+.footer-text { display: flex; flex-direction: column; gap: 0.45rem; text-align: center; }
+
+.footer-credit    { font-family: var(--font-mono); font-size: 1rem;   color: rgba(190,180,230,0.72); letter-spacing: 0.03em; }
+.footer-statement { font-family: var(--font-mono); font-size: 1.2rem; color: rgba(235,230,255,0.96); letter-spacing: 0.02em; }
+.footer-disclaimer{ font-family: var(--font-mono); font-size: 0.95rem; color: rgba(190,180,230,0.68); font-style: italic; letter-spacing: 0.02em; }
+
+.footer-gh-link { color: var(--accent-bright); transition: color var(--ease); }
+.footer-gh-link:hover { color: #ffffff; text-decoration: underline; }
+
+.fingerprint-btn {
+    background: none; border: none; cursor: pointer;
+    color: rgba(210, 200, 255, 0.75); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    padding: 6px; border-radius: 4px;
+    transition: color var(--ease), filter var(--ease), transform var(--ease);
+}
+.fingerprint-btn svg   { width: 48px; height: 56px; }
+.fingerprint-btn:hover {
+    color: var(--accent-bright); transform: scale(1.12);
+    filter: drop-shadow(0 0 8px var(--accent-glow));
+    animation: fpPulse 1.2s ease-in-out infinite;
+}
+
+/* ============================================================
+   SCROLL-TO-TOP
+   ============================================================ */
+.scroll-top-btn {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 90;
+    width: 56px; height: 56px;
+    background: rgba(122, 48, 255, 0.32);
+    border: 1.5px solid rgba(160, 96, 255, 0.70);
+    border-radius: 12px;
+    color: #ffffff; font-size: 1.4rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 16px rgba(122, 48, 255, 0.45), 0 0 32px rgba(122, 48, 255, 0.20);
+    opacity: 0; pointer-events: none;
+    transition: opacity var(--ease), background var(--ease), transform var(--ease), box-shadow var(--ease);
+}
+.scroll-top-btn.visible { opacity: 1; pointer-events: all; }
+.scroll-top-btn:hover {
+    background: rgba(122, 48, 255, 0.52);
+    box-shadow: 0 0 22px rgba(122, 48, 255, 0.65), 0 0 50px rgba(122, 48, 255, 0.30);
+    transform: translateY(-3px);
+}
+
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+@keyframes fpPulse {
+    0%, 100% { filter: drop-shadow(0 0 5px  var(--accent-glow)); }
+    50%       { filter: drop-shadow(0 0 14px var(--accent-glow)); }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+    :root { --bubble-size: 130px; }
+}
+
+@media (max-width: 600px) {
+    :root { --bubble-size: 100px; }
+    #navbar { padding: 0 1.2rem; }
+    .nav-links a { font-size: 0.7rem; }
+    .company-card { padding: 1.6rem 1.4rem; }
+}
+
+@media (max-width: 520px) {
+    .nav-links { display: none; }
+}

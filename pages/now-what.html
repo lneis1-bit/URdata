@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Now What? — URData</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="../assets/css/now-what-style.css" />
+    </head>
+    <body>
+
+        <!-- NAV -->
+        <nav id="navbar">
+            <a href="../index.html" id="nav-eye-link" class="nav-eye-link" aria-label="Back to home">
+                <svg id="nav-eye-svg" class="eye-svg" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <clipPath id="nav-eye-clip">
+                            <path d="M 5,30 C 27,8 93,8 115,30 C 93,52 27,52 5,30 Z" />
+                        </clipPath>
+                    </defs>
+                    <path class="eye-sclera"    d="M 5,30 C 27,8  93,8  115,30 C 93,52 27,52 5,30 Z" />
+                    <path class="eye-lid-shade" d="M 5,30 C 27,8  93,8  115,30 C 80,18 40,18 5,30 Z" />
+                    <g clip-path="url(#nav-eye-clip)">
+                        <circle class="eye-iris"      cx="60" cy="30" r="17" />
+                        <circle class="eye-iris-ring" cx="60" cy="30" r="17" />
+                        <circle class="eye-iris-mid"  cx="60" cy="30" r="11" />
+                        <circle id="nav-pupil"        class="eye-pupil" cx="60" cy="30" r="8" />
+                        <ellipse id="nav-highlight"   class="eye-gleam" cx="55" cy="25" rx="3.5" ry="2.5" />
+                    </g>
+                    <path class="eye-outline"  d="M 5,30 C 27,8  93,8  115,30 C 93,52 27,52 5,30 Z" />
+                    <path class="eye-lid-line" d="M 5,30 C 27,8  93,8  115,30" />
+                </svg>
+            </a>
+            <ul class="nav-links">
+                <li><a href="collected.html">Collected Data</a></li>
+                <li><a href="collectors.html">Collectors</a></li>
+                <li><a href="so-what.html">So What?</a></li>
+                <li><a href="now-what.html" class="nav-current">Now What?</a></li>
+                <li><a href="#">Coming Soon</a></li>
+                <li><a href="#">External Sources</a></li>
+            </ul>
+        </nav>
+
+        <!-- SECTION 1: PUZZLE SELECTOR -->
+        <section id="puzzle-section">
+            <div id="puzzle-intro">
+                <h1 id="puzzle-title" class="puzzle-title" data-text="Now What?"></h1>
+                <p class="puzzle-tagline">// Select a category to see what you can do.</p>
+            </div>
+
+            <div id="puzzle-arena">
+                <!-- Simple card array — same icons/labels, glow + pull-down on select -->
+                <div class="piece-card" data-id="0">
+                    <svg class="card-icon" viewBox="-42 -40 84 70" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="-36" y="-30" width="72" height="50" rx="4" fill="none"/>
+                        <rect x="-30" y="-24" width="60" height="38" rx="2" fill="rgba(120,50,240,0.18)"/>
+                        <line x1="-22" y1="-16" x2="20"  y2="-16"/>
+                        <line x1="-22" y1="-8"  x2="13"  y2="-8"/>
+                        <line x1="-22" y1="0"   x2="17"  y2="0"/>
+                        <line x1="-36" y1="20"  x2="36"  y2="20" stroke-width="2"/>
+                        <rect x="-42" y="20" width="84" height="14" rx="4" fill="none"/>
+                        <rect x="-13" y="24" width="26" height="7"  rx="2" fill="none" opacity="0.6"/>
+                    </svg>
+                    <span class="card-label">Desktops &amp; Laptops</span>
+                </div>
+
+                <div class="piece-card" data-id="1">
+                    <svg class="card-icon" viewBox="-22 -42 44 84" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="-20" y="-38" width="40" height="76" rx="7" fill="none"/>
+                        <rect x="-14" y="-28" width="28" height="46" rx="3" fill="rgba(120,50,240,0.18)"/>
+                        <line x1="-8" y1="-33" x2="8"  y2="-33" stroke-width="3" stroke-linecap="round"/>
+                        <line x1="-6" y1="31"  x2="6"  y2="31"  stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="-6" cy="-14" r="5" fill="none" opacity="0.55"/>
+                        <circle cx="6"  cy="-14" r="5" fill="none" opacity="0.55"/>
+                    </svg>
+                    <span class="card-label">Mobile Devices</span>
+                </div>
+
+                <div class="piece-card" data-id="2">
+                    <!-- Lightbulb icon -->
+                    <svg class="card-icon" viewBox="-28 -42 56 76" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Bulb dome: rounder top, shifted down -->
+                        <path d="M -18,-14 C -18,-38 18,-38 18,-14 C 18,-4 10,10 8,20 L -8,20 C -10,10 -18,-4 -18,-14 Z" fill="rgba(120,50,240,0.18)"/>
+                        <!-- Base box -->
+                        <rect x="-8" y="20" width="16" height="12" rx="1" fill="none"/>
+                        <!-- Threading lines -->
+                        <line x1="-8" y1="24" x2="8" y2="24"/>
+                        <line x1="-8" y1="28" x2="8" y2="28"/>
+                        <!-- Nub -->
+                        <rect x="-4" y="32" width="8" height="2" rx="1" fill="none" opacity="0.7"/>
+                        <!-- Filament -->
+                        <path d="M -6,12 L -3,4 L 0,8 L 3,4 L 6,12" fill="none" stroke-width="1.4"/>
+                        <!-- Shine lines -->
+                        <line x1="20" y1="-18" x2="24" y2="-22" stroke-linecap="round" opacity="0.6"/>
+                        <line x1="22" y1="-6"  x2="27" y2="-6"  stroke-linecap="round" opacity="0.6"/>
+                        <line x1="-20" y1="-18" x2="-24" y2="-22" stroke-linecap="round" opacity="0.6"/>
+                        <line x1="-22" y1="-6"  x2="-27" y2="-6"  stroke-linecap="round" opacity="0.6"/>
+                        <line x1="0" y1="-38" x2="0" y2="-34" stroke-linecap="round" opacity="0.6"/>
+                    </svg>
+                    <span class="card-label">Unconventional Devices</span>
+                </div>
+
+                <div class="piece-card" data-id="3">
+                    <!-- Open book icon -->
+                    <svg class="card-icon" viewBox="-38 -30 76 60" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Left page -->
+                        <path d="M 0,-22 C -6,-24 -22,-24 -34,-20 L -34,22 C -22,18 -6,18 0,20 Z" fill="rgba(120,50,240,0.18)"/>
+                        <!-- Right page -->
+                        <path d="M 0,-22 C 6,-24 22,-24 34,-20 L 34,22 C 22,18 6,18 0,20 Z" fill="rgba(120,50,240,0.18)"/>
+                        <!-- Spine -->
+                        <line x1="0" y1="-22" x2="0" y2="20" stroke-width="2"/>
+                        <!-- Left page lines -->
+                        <line x1="-28" y1="-10" x2="-6"  y2="-12" opacity="0.7"/>
+                        <line x1="-28" y1="-2"  x2="-6"  y2="-4"  opacity="0.7"/>
+                        <line x1="-28" y1="6"   x2="-6"  y2="4"   opacity="0.7"/>
+                        <!-- Right page lines -->
+                        <line x1="6"   y1="-12" x2="28"  y2="-10" opacity="0.7"/>
+                        <line x1="6"   y1="-4"  x2="28"  y2="-2"  opacity="0.7"/>
+                        <line x1="6"   y1="4"   x2="28"  y2="6"   opacity="0.7"/>
+                        <!-- Bottom curve -->
+                        <path d="M -34,22 Q 0,28 34,22" fill="none"/>
+                    </svg>
+                    <span class="card-label">Information &amp; Outreach</span>
+                </div>
+
+                <div class="piece-card" data-id="4">
+                    <svg class="card-icon" viewBox="-38 -38 76 76" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="0" cy="0" r="34" fill="none"/>
+                        <ellipse cx="0" cy="0" rx="15" ry="34" fill="none"/>
+                        <path d="M -33,-11 Q 0,-16 33,-11" fill="none"/>
+                        <path d="M -33,11  Q 0,16  33,11"  fill="none"/>
+                        <line x1="-34" y1="0" x2="34" y2="0" stroke-dasharray="5 4"/>
+                        <path d="M -33,-22 Q 0,-28 33,-22" fill="none" opacity="0.5"/>
+                        <path d="M -33,22  Q 0,28  33,22"  fill="none" opacity="0.5"/>
+                        <circle cx="0" cy="-34" r="3" fill="currentColor"/>
+                        <circle cx="0" cy="34"  r="3" fill="currentColor"/>
+                    </svg>
+                    <span class="card-label">The Internet</span>
+                </div>
+
+                <!-- kept for JS compatibility, hidden -->
+                <svg id="puzzle-svg" style="display:none" aria-hidden="true">
+                    <defs>
+                        <filter id="piece-glow" x="-30%" y="-30%" width="160%" height="160%">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+                            <feMerge>
+                                <feMergeNode in="blur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                        <!-- Clip paths match full fill shapes (including blank cutouts) -->
+                        <clipPath id="cp-0">
+                            <path d="M 15,15 L 185,15 L 185,100 L 209,100 L 209,150 L 185,150 L 185,265 L 15,265 Z"/>
+                        </clipPath>
+                        <clipPath id="cp-1">
+                            <path d="M 185,15 L 355,15 L 355,100 L 379,100 L 379,150 L 355,150 L 355,265 L 185,265 L 185,150 L 209,150 L 209,100 L 185,100 Z"/>
+                        </clipPath>
+                        <clipPath id="cp-2">
+                            <path d="M 355,15 L 525,15 L 525,100 L 549,100 L 549,150 L 525,150 L 525,265 L 355,265 L 355,150 L 379,150 L 379,100 L 355,100 Z"/>
+                        </clipPath>
+                        <clipPath id="cp-3">
+                            <path d="M 525,15 L 695,15 L 695,100 L 719,100 L 719,150 L 695,150 L 695,265 L 525,265 L 525,150 L 549,150 L 549,100 L 525,100 Z"/>
+                        </clipPath>
+                        <clipPath id="cp-4">
+                            <path d="M 695,15 L 865,15 L 865,265 L 695,265 L 695,150 L 719,150 L 719,100 L 695,100 Z"/>
+                        </clipPath>
+                    </defs>
+
+                    <!-- ── PIECE 0 — Desktops & Laptops ── -->
+                    <g class="piece-group" data-id="0" data-shift-x="-28" data-shift-y="0">
+                        <!-- Fill: full piece including tab -->
+                        <path class="piece-bg" clip-path="url(#cp-0)"
+                              d="M 15,15 L 185,15 L 185,100 L 209,100 L 209,150 L 185,150 L 185,265 L 15,265 Z"/>
+                        <!-- Outer stroke: all edges (piece 0 has no blank, all edges are outer) -->
+                        <path class="piece-outer"
+                              d="M 15,15 L 185,15 L 185,100 L 209,100 L 209,150 L 185,150 L 185,265 L 15,265 Z"/>
+                        <!-- Icon + label, clipped to piece -->
+                        <g clip-path="url(#cp-0)" class="piece-content">
+                            <g transform="translate(100,115)" class="piece-icon">
+                                <rect x="-36" y="-30" width="72" height="50" rx="4"/>
+                                <rect x="-30" y="-24" width="60" height="38" rx="2" class="icon-screen"/>
+                                <line x1="-22" y1="-16" x2="20"  y2="-16"/>
+                                <line x1="-22" y1="-8"  x2="13"  y2="-8"/>
+                                <line x1="-22" y1="0"   x2="17"  y2="0"/>
+                                <line x1="-36" y1="20"  x2="36"  y2="20" stroke-width="2"/>
+                                <rect x="-42" y="20" width="84" height="14" rx="4"/>
+                                <rect x="-13" y="24" width="26" height="7" rx="2" class="icon-dim"/>
+                            </g>
+                            <text x="100" y="212" class="piece-label" text-anchor="middle">Desktops &amp;</text>
+                            <text x="100" y="232" class="piece-label" text-anchor="middle">Laptops</text>
+                        </g>
+                    </g>
+
+                    <!-- ── PIECE 1 — Mobile Devices ── -->
+                    <g class="piece-group" data-id="1" data-shift-x="-20" data-shift-y="20">
+                        <path class="piece-bg" clip-path="url(#cp-1)"
+                              d="M 185,15 L 355,15 L 355,100 L 379,100 L 379,150 L 355,150 L 355,265 L 185,265 L 185,150 L 209,150 L 209,100 L 185,100 Z"/>
+                        <!-- Outer stroke: skip blank faces (185,150→209,150→209,100→185,100) -->
+                        <path class="piece-outer"
+                              d="M 185,15 L 355,15 L 355,100 L 379,100 L 379,150 L 355,150 L 355,265 L 185,265 L 185,150 M 185,100 L 185,15"/>
+                        <g clip-path="url(#cp-1)" class="piece-content">
+                            <g transform="translate(270,115)" class="piece-icon">
+                                <rect x="-20" y="-38" width="40" height="76" rx="7"/>
+                                <rect x="-14" y="-28" width="28" height="46" rx="3" class="icon-screen"/>
+                                <line x1="-8" y1="-33" x2="8"  y2="-33" stroke-width="3" stroke-linecap="round"/>
+                                <line x1="-6" y1="31"  x2="6"  y2="31"  stroke-width="3" stroke-linecap="round"/>
+                                <circle cx="-6" cy="-14" r="5" class="icon-dim"/>
+                                <circle cx="6"  cy="-14" r="5" class="icon-dim"/>
+                            </g>
+                            <text x="270" y="212" class="piece-label" text-anchor="middle">Mobile</text>
+                            <text x="270" y="232" class="piece-label" text-anchor="middle">Devices</text>
+                        </g>
+                    </g>
+
+                    <!-- ── PIECE 2 — Unconventional Devices ── -->
+                    <g class="piece-group" data-id="2" data-shift-x="0" data-shift-y="28">
+                        <path class="piece-bg" clip-path="url(#cp-2)"
+                              d="M 355,15 L 525,15 L 525,100 L 549,100 L 549,150 L 525,150 L 525,265 L 355,265 L 355,150 L 379,150 L 379,100 L 355,100 Z"/>
+                        <path class="piece-outer"
+                              d="M 355,15 L 525,15 L 525,100 L 549,100 L 549,150 L 525,150 L 525,265 L 355,265 L 355,150 M 355,100 L 355,15"/>
+                        <g clip-path="url(#cp-2)" class="piece-content">
+                            <g transform="translate(440,120)" class="piece-icon">
+                                <!-- Car: clear side-view silhouette -->
+                                <path d="M -48,8 L -42,-6 L -24,-22 L 22,-22 L 36,-6 L 48,8"/>
+                                <line x1="-48" y1="8"  x2="48"  y2="8"/>
+                                <line x1="-48" y1="8"  x2="-48" y2="20"/>
+                                <line x1="48"  y1="8"  x2="48"  y2="20"/>
+                                <line x1="-28" y1="20" x2="28"  y2="20"/>
+                                <!-- Cab area -->
+                                <path d="M -24,-22 L -26,-6 L 8,-6 L 12,-22" class="icon-screen"/>
+                                <path d="M -42,-6 L -24,-20 L -24,-6 Z" class="icon-screen"/>
+                                <!-- Door line -->
+                                <line x1="-8" y1="-6" x2="-8" y2="8"/>
+                                <!-- Headlight / taillight -->
+                                <rect x="40" y="2" width="10" height="6" rx="1" class="icon-dim"/>
+                                <rect x="-50" y="2" width="10" height="6" rx="1" class="icon-dim"/>
+                                <!-- Wheels -->
+                                <circle cx="-30" cy="24" r="12"/>
+                                <circle cx="28"  cy="24" r="12"/>
+                                <circle cx="-30" cy="24" r="5" class="icon-dim"/>
+                                <circle cx="28"  cy="24" r="5" class="icon-dim"/>
+                            </g>
+                            <text x="440" y="212" class="piece-label" text-anchor="middle">Unconventional</text>
+                            <text x="440" y="232" class="piece-label" text-anchor="middle">Devices</text>
+                        </g>
+                    </g>
+
+                    <!-- ── PIECE 3 — Information & Outreach ── -->
+                    <g class="piece-group" data-id="3" data-shift-x="20" data-shift-y="20">
+                        <path class="piece-bg" clip-path="url(#cp-3)"
+                              d="M 525,15 L 695,15 L 695,100 L 719,100 L 719,150 L 695,150 L 695,265 L 525,265 L 525,150 L 549,150 L 549,100 L 525,100 Z"/>
+                        <path class="piece-outer"
+                              d="M 525,15 L 695,15 L 695,100 L 719,100 L 719,150 L 695,150 L 695,265 L 525,265 L 525,150 M 525,100 L 525,15"/>
+                        <g clip-path="url(#cp-3)" class="piece-content">
+                            <g transform="translate(610,118)" class="piece-icon">
+                                <!-- Brain: two clear lobes with visible folds -->
+                                <!-- Right lobe -->
+                                <path d="M 2,-33 C 14,-34 28,-26 32,-14 C 38,-4 36,12 28,20 C 32,28 24,34 14,32 C 10,35 5,36 2,35"/>
+                                <!-- Left lobe -->
+                                <path d="M -2,-33 C -14,-34 -28,-26 -32,-14 C -38,-4 -36,12 -28,20 C -32,28 -24,34 -14,32 C -10,35 -5,36 -2,35"/>
+                                <!-- Centre sulcus -->
+                                <line x1="0" y1="-33" x2="0" y2="35" stroke-width="1.5"/>
+                                <!-- Right lobe folds -->
+                                <path d="M 6,-20 C 14,-23 24,-18 26,-11"/>
+                                <path d="M 8,2 C 16,-1 26,2 28,9"/>
+                                <path d="M 5,20 C 12,17 22,20 24,25"/>
+                                <!-- Left lobe folds (mirror) -->
+                                <path d="M -6,-20 C -14,-23 -24,-18 -26,-11"/>
+                                <path d="M -8,2 C -16,-1 -26,2 -28,9"/>
+                                <path d="M -5,20 C -12,17 -22,20 -24,25"/>
+                                <!-- Cerebellum hint -->
+                                <path d="M -10,34 C -6,40 6,40 10,34" class="icon-dim"/>
+                            </g>
+                            <text x="610" y="212" class="piece-label" text-anchor="middle">Information &amp;</text>
+                            <text x="610" y="232" class="piece-label" text-anchor="middle">Outreach</text>
+                        </g>
+                    </g>
+
+                    <!-- ── PIECE 4 — The Internet ── -->
+                    <g class="piece-group" data-id="4" data-shift-x="28" data-shift-y="0">
+                        <path class="piece-bg" clip-path="url(#cp-4)"
+                              d="M 695,15 L 865,15 L 865,265 L 695,265 L 695,150 L 719,150 L 719,100 L 695,100 Z"/>
+                        <!-- Outer: skip blank (695,150→719,150→719,100→695,100) -->
+                        <path class="piece-outer"
+                              d="M 695,15 L 865,15 L 865,265 L 695,265 L 695,150 M 695,100 L 695,15"/>
+                        <g clip-path="url(#cp-4)" class="piece-content">
+                            <g transform="translate(780,120)" class="piece-icon">
+                                <circle cx="0" cy="0" r="36"/>
+                                <ellipse cx="0" cy="0" rx="16" ry="36"/>
+                                <path d="M -35,-13 Q 0,-18 35,-13"/>
+                                <path d="M -35,13  Q 0,18  35,13"/>
+                                <line x1="-36" y1="0" x2="36" y2="0" stroke-dasharray="6 4"/>
+                                <path d="M -35,-24 Q 0,-30 35,-24" class="icon-dim"/>
+                                <path d="M -35,24  Q 0,30  35,24"  class="icon-dim"/>
+                                <circle cx="0" cy="-36" r="3"/>
+                                <circle cx="0" cy="36"  r="3"/>
+                            </g>
+                            <text x="780" y="212" class="piece-label" text-anchor="middle">The</text>
+                            <text x="780" y="232" class="piece-label" text-anchor="middle">Internet</text>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+        </section>
+
+        <!-- SECTION 2: SHAPED CONTENT -->
+        <section id="content-section">
+            <div id="content-wrap">
+                <div id="content-placeholder">
+                    <span class="placeholder-label">// awaiting selection</span>
+                    <p class="placeholder-text">Select a category above to see what you can do.</p>
+                </div>
+                <article id="content-card"></article>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer id="footer">
+            <div class="footer-inner">
+                <button id="back-to-top" class="fingerprint-btn" aria-label="Back to top">
+                    <svg viewBox="0 0 60 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M30,6  C16,6  5,17  5,31 C5,42  9,51  17,57 C21,61 26,64 30,65" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M30,6  C44,6  55,17 55,31 C55,42 51,51 43,57 C39,61 34,64 30,65" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M30,12 C19,12 11,21 11,31 C11,40 15,48 21,53" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M30,12 C41,12 49,21 49,31 C49,40 45,48 39,53" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M30,18 C23,18 17,24 17,31 C17,38 21,44 27,48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M30,18 C37,18 43,24 43,31 C43,38 39,44 33,48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M30,24 C26,24 22,27 22,31 C22,36 25,40 30,43" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M30,24 C34,24 38,27 38,31 C38,36 35,40 30,43" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="footer-text">
+                    <p class="footer-credit">&copy; 2026 lneis1 &mdash; created as part of an ethics project on data privacy.</p>
+                    <p class="footer-statement">No user data was collected in the making of this site.</p>
+                    <p class="footer-disclaimer">For educational purposes only. &nbsp;|&nbsp;
+                        <a href="https://github.com/lneis1-bit/URdata" target="_blank" rel="noopener" class="footer-gh-link">View on GitHub</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <button id="scroll-top-btn" class="scroll-top-btn" aria-label="Back to top">&#8593;</button>
+
+        <script src="../assets/js/now-what-script.js"></script>
+    </body>
+</html>

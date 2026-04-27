@@ -315,6 +315,7 @@ a { color: inherit; text-decoration: none; }
    ============================================================ */
 #summary {
     flex-direction: column;
+    min-height: 55vh;
 }
 
 .section-title {
@@ -373,12 +374,14 @@ a { color: inherit; text-decoration: none; }
    ============================================================ */
 #navigator {
     flex-direction: column;
+    align-items: flex-start;
+    padding-top: calc(var(--nav-h) + 1.5rem);
 }
 
 .navigator-inner {
     display: flex;
     align-items: center;
-    gap: 4.5rem;
+    gap: 3rem;
 }
 
 /* ── Camera side ── */
@@ -388,7 +391,7 @@ a { color: inherit; text-decoration: none; }
 
 .camera-container {
     position: relative;
-    width: clamp(280px, 38vw, 420px);
+    width: clamp(340px, 44vw, 520px);
 }
 
 #camera-svg {
@@ -400,8 +403,8 @@ a { color: inherit; text-decoration: none; }
 /* Camera label text (styles applied via JS class) */
 .cam-label {
     font-family: var(--font-mono);
-    font-size: 16px;
-    fill: rgba(200, 185, 255, 0.9);
+    font-size: 17px;
+    fill: rgba(210, 195, 255, 0.95);
     cursor: pointer;
     user-select: none;
     transition: fill 0.25s;
@@ -452,10 +455,10 @@ a { color: inherit; text-decoration: none; }
 
 .suggested-path {
     font-family: var(--font-mono);
-    font-size: 1.0rem;
+    font-size: 1.05rem;
     color: var(--text-secondary);
     letter-spacing: 0.08em;
-    margin-bottom: 0.8rem;
+    margin-bottom: 1.4rem;
 }
 
 .section-list {
@@ -463,14 +466,33 @@ a { color: inherit; text-decoration: none; }
     counter-reset: sec-counter;
     display: flex;
     flex-direction: column;
-    gap: 0.15rem;
+    gap: 0;
+    position: relative;
+}
+
+/* Vertical timeline connector — sits between numbers and content */
+.section-list::before {
+    content: '';
+    position: absolute;
+    left: 2.8rem;
+    top: 1.8rem;
+    bottom: 1.8rem;
+    width: 1px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(122, 48, 255, 0.40) 12%,
+        rgba(122, 48, 255, 0.40) 88%,
+        transparent
+    );
+    pointer-events: none;
 }
 
 .section-list li {
     counter-increment: sec-counter;
     display: flex;
     flex-direction: column;
-    padding: 0.75rem 1rem 0.75rem 2.2rem;
+    padding: 1.05rem 1rem 1.05rem 4rem;
     border-left: 2px solid transparent;
     cursor: pointer;
     position: relative;
@@ -486,22 +508,25 @@ a { color: inherit; text-decoration: none; }
     animation: slideRight 0.5s ease forwards;
 }
 
+/* Numbers sit to the LEFT of the timeline line */
 .section-list li::before {
     content: counter(sec-counter, decimal-leading-zero);
     position: absolute;
     left: 0; top: 50%;
     transform: translateY(-50%);
+    width: 2.4rem;
+    text-align: right;
     font-family: var(--font-mono);
-    font-size: 0.95rem;
+    font-size: 1.25rem;
     color: var(--accent-bright);
-    opacity: 0.75;
+    opacity: 0.85;
     transition: color 0.25s ease, opacity 0.25s ease;
 }
 
 .section-list li:hover {
     border-left-color: var(--accent);
     background: var(--accent-dim);
-    padding-left: 2.6rem;
+    padding-left: 4.4rem;
 }
 
 .section-list li:hover::before {
@@ -511,16 +536,16 @@ a { color: inherit; text-decoration: none; }
 
 .s-name {
     font-family: var(--font-mono);
-    font-size: 1.08rem;
+    font-size: 1.3rem;
     color: var(--text-primary);
     letter-spacing: 0.03em;
 }
 
 .s-teaser {
-    font-size: 0.95rem;
+    font-size: 1.0rem;
     color: rgba(190, 182, 230, 0.82);
     font-style: italic;
-    margin-top: 0.25rem;
+    margin-top: 0.3rem;
 }
 
 /* ============================================================
@@ -535,36 +560,38 @@ a { color: inherit; text-decoration: none; }
 .footer-inner {
     max-width: 1120px;
     margin: 0 auto;
-    min-height: 120px;
+    min-height: 85px;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 2rem;
 }
 
 .footer-text {
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
+    gap: 0.45rem;
+    text-align: center;
 }
 
 .footer-credit {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: rgba(180, 170, 220, 0.55);
+    font-size: 1rem;
+    color: rgba(190, 180, 230, 0.72);
     letter-spacing: 0.03em;
 }
 
 .footer-statement {
     font-family: var(--font-mono);
-    font-size: 0.95rem;
-    color: rgba(230, 225, 255, 0.92);
+    font-size: 1.2rem;
+    color: rgba(235, 230, 255, 0.96);
     letter-spacing: 0.02em;
 }
 
 .footer-disclaimer {
     font-family: var(--font-mono);
-    font-size: 0.78rem;
-    color: rgba(180, 170, 220, 0.5);
+    font-size: 0.95rem;
+    color: rgba(190, 180, 230, 0.68);
     font-style: italic;
     letter-spacing: 0.02em;
 }
@@ -652,7 +679,7 @@ a { color: inherit; text-decoration: none; }
         gap: 3rem;
     }
     .camera-container {
-        width: min(320px, 80vw);
+        width: min(420px, 85vw);
     }
 }
 

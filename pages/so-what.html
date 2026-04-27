@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>So What? — URData</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="../assets/css/so-what-style.css" />
+    </head>
+    <body>
+
+        <!-- NAV -->
+        <nav id="navbar">
+            <a href="../index.html" id="nav-eye-link" class="nav-eye-link" aria-label="Back to home">
+                <svg id="nav-eye-svg" class="eye-svg" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <clipPath id="nav-eye-clip">
+                            <path d="M 5,30 C 27,8 93,8 115,30 C 93,52 27,52 5,30 Z" />
+                        </clipPath>
+                    </defs>
+                    <path class="eye-sclera"    d="M 5,30 C 27,8  93,8  115,30 C 93,52 27,52 5,30 Z" />
+                    <path class="eye-lid-shade" d="M 5,30 C 27,8  93,8  115,30 C 80,18 40,18 5,30 Z" />
+                    <g clip-path="url(#nav-eye-clip)">
+                        <circle class="eye-iris"      cx="60" cy="30" r="17" />
+                        <circle class="eye-iris-ring" cx="60" cy="30" r="17" />
+                        <circle class="eye-iris-mid"  cx="60" cy="30" r="11" />
+                        <circle id="nav-pupil"        class="eye-pupil" cx="60" cy="30" r="8" />
+                        <ellipse id="nav-highlight"   class="eye-gleam" cx="55" cy="25" rx="3.5" ry="2.5" />
+                    </g>
+                    <path class="eye-outline"  d="M 5,30 C 27,8  93,8  115,30 C 93,52 27,52 5,30 Z" />
+                    <path class="eye-lid-line" d="M 5,30 C 27,8  93,8  115,30" />
+                </svg>
+            </a>
+            <ul class="nav-links">
+                <li><a href="collected.html">Collected Data</a></li>
+                <li><a href="collectors.html">Collectors</a></li>
+                <li><a href="so-what.html" class="nav-current">So What?</a></li>
+                <li><a href="now-what.html">Now What?</a></li>
+                <li><a href="#">Coming Soon</a></li>
+                <li><a href="#">External Sources</a></li>
+            </ul>
+        </nav>
+
+        <!-- MAIN -->
+        <main id="sowhat-main">
+
+            <div id="page-intro">
+                <h1 id="intro-title" class="intro-title" data-text="So What?"></h1>
+                <blockquote class="intro-quote">
+                    <p class="intro-quote-text">&ldquo;If you want a picture of the future, imagine a boot stamping on a human face&mdash;for ever.&rdquo;</p>
+                    <cite class="intro-quote-cite">&mdash; George Orwell, <em>1984</em></cite>
+                </blockquote>
+            </div>
+
+            <div id="node-canvas-wrap">
+
+                <svg id="connections-svg" aria-hidden="true">
+                    <defs>
+                        <filter id="path-glow" x="-30%" y="-30%" width="160%" height="160%">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                        <filter id="dot-glow" x="-200%" y="-200%" width="500%" height="500%">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+                </svg>
+
+                <!-- MASTER NODE -->
+                <div class="node-wrap node-center" id="master-wrap">
+                    <div class="node-group" id="master-group">
+                        <div class="node master-node" id="node-0">
+                            <div class="node-inner">
+                                <h2 class="node-title master-title">Why Does It Matter?</h2>
+                                <p class="master-subtitle">Data collection isn't neutral — it has consequences that reach far beyond the screen.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CHILD NODE 1 — LEFT -->
+                <div class="node-wrap node-left" data-node="1">
+                    <div class="node-group">
+                        <div class="node child-node" id="node-1">
+                            <div class="node-inner">
+                                <span class="node-index">01</span>
+                                <h2 class="node-title">Loss of Autonomy</h2>
+                                <div class="node-divider"></div>
+                                <p class="node-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CHILD NODE 2 — RIGHT -->
+                <div class="node-wrap node-right" data-node="2">
+                    <div class="node-group">
+                        <div class="node child-node" id="node-2">
+                            <div class="node-inner">
+                                <span class="node-index">02</span>
+                                <h2 class="node-title">Erosion of Trust</h2>
+                                <div class="node-divider"></div>
+                                <p class="node-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CHILD NODE 3 — LEFT -->
+                <div class="node-wrap node-left" data-node="3">
+                    <div class="node-group">
+                        <div class="node child-node" id="node-3">
+                            <div class="node-inner">
+                                <span class="node-index">03</span>
+                                <h2 class="node-title">Targeted Manipulation</h2>
+                                <div class="node-divider"></div>
+                                <p class="node-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CHILD NODE 4 — RIGHT -->
+                <div class="node-wrap node-right" data-node="4">
+                    <div class="node-group">
+                        <div class="node child-node" id="node-4">
+                            <div class="node-inner">
+                                <span class="node-index">04</span>
+                                <h2 class="node-title">Identity Exposure</h2>
+                                <div class="node-divider"></div>
+                                <p class="node-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CHILD NODE 5 — LEFT -->
+                <div class="node-wrap node-left" data-node="5">
+                    <div class="node-group">
+                        <div class="node child-node" id="node-5">
+                            <div class="node-inner">
+                                <span class="node-index">05</span>
+                                <h2 class="node-title">Chilling Effect</h2>
+                                <div class="node-divider"></div>
+                                <p class="node-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CHILD NODE 6 — RIGHT -->
+                <div class="node-wrap node-right" data-node="6">
+                    <div class="node-group">
+                        <div class="node child-node" id="node-6">
+                            <div class="node-inner">
+                                <span class="node-index">06</span>
+                                <h2 class="node-title">Power Asymmetry</h2>
+                                <div class="node-divider"></div>
+                                <p class="node-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CHILD NODE 7 — LEFT -->
+                <div class="node-wrap node-left" data-node="7">
+                    <div class="node-group">
+                        <div class="node child-node" id="node-7">
+                            <div class="node-inner">
+                                <span class="node-index">07</span>
+                                <h2 class="node-title">Surveillance Capitalism</h2>
+                                <div class="node-divider"></div>
+                                <p class="node-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CHILD NODE 8 — RIGHT -->
+                <div class="node-wrap node-right" data-node="8">
+                    <div class="node-group">
+                        <div class="node child-node" id="node-8">
+                            <div class="node-inner">
+                                <span class="node-index">08</span>
+                                <h2 class="node-title">Social Engineering</h2>
+                                <div class="node-divider"></div>
+                                <p class="node-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CHILD NODE 9 — LEFT -->
+                <div class="node-wrap node-left" data-node="9">
+                    <div class="node-group">
+                        <div class="node child-node" id="node-9">
+                            <div class="node-inner">
+                                <span class="node-index">09</span>
+                                <h2 class="node-title">The Permanent Record</h2>
+                                <div class="node-divider"></div>
+                                <p class="node-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- #node-canvas-wrap -->
+
+        </main>
+
+        <footer id="footer">
+            <div class="footer-inner">
+                <button id="back-to-top" class="fingerprint-btn" aria-label="Back to top">
+                    <svg viewBox="0 0 60 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M30,6  C16,6  5,17  5,31 C5,42  9,51  17,57 C21,61 26,64 30,65" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M30,6  C44,6  55,17 55,31 C55,42 51,51 43,57 C39,61 34,64 30,65" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M30,12 C19,12 11,21 11,31 C11,40 15,48 21,53" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M30,12 C41,12 49,21 49,31 C49,40 45,48 39,53" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M30,18 C23,18 17,24 17,31 C17,38 21,44 27,48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M30,18 C37,18 43,24 43,31 C43,38 39,44 33,48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M30,24 C26,24 22,27 22,31 C22,36 25,40 30,43" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M30,24 C34,24 38,27 38,31 C38,36 35,40 30,43" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="footer-text">
+                    <p class="footer-credit">&copy; 2026 lneis1 &mdash; created as part of an ethics project on data privacy.</p>
+                    <p class="footer-statement">No user data was collected in the making of this site.</p>
+                    <p class="footer-disclaimer">For educational purposes only. &nbsp;|&nbsp;
+                        <a href="https://github.com/lneis1-bit/URdata" target="_blank" rel="noopener" class="footer-gh-link">View on GitHub</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <button id="scroll-top-btn" class="scroll-top-btn" aria-label="Back to top">&#8593;</button>
+
+        <script src="../assets/js/so-what-script.js"></script>
+    </body>
+</html>

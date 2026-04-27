@@ -4,7 +4,7 @@
             dropdown navigation, back-to-top buttons.
    ============================================================ */
 
-/* ── Navbar Eye Tracking ────────────────────────────────────── */
+/* ── Nav Eye Tracking ──────────────────────────────────────── */
 
 const navEyeSvg    = document.getElementById('nav-eye-svg');
 const navPupil     = document.getElementById('nav-pupil');
@@ -20,14 +20,13 @@ function screenToSVG(svgEl, sx, sy) {
 document.addEventListener('mousemove', (e) => {
     if (!navEyeSvg) return;
     const p     = screenToSVG(navEyeSvg, e.clientX, e.clientY);
-    const cx = 60, cy = 30, maxOff = 8, factor = 0.16;
-    const dx    = p.x - cx;
-    const dy    = p.y - cy;
-    const dist  = Math.sqrt(dx * dx + dy * dy);
+    const cx    = 60, cy = 30;
+    const dx    = p.x - cx, dy = p.y - cy;
     const angle = Math.atan2(dy, dx);
-    const off   = Math.max(0, Math.min(dist * factor, maxOff));
+    const off   = Math.max(0, Math.min(Math.sqrt(dx * dx + dy * dy) * 0.16, 8));
     const px    = cx + Math.cos(angle) * off;
     const py    = cy + Math.sin(angle) * off;
+
     navPupil.setAttribute('cx', px);
     navPupil.setAttribute('cy', py);
     navHighlight.setAttribute('cx', px + Math.cos(angle) * 3.5);
@@ -138,9 +137,9 @@ function drawFrame() {
         ctx.beginPath();
         ctx.moveTo(wire.x, 0);
         ctx.lineTo(wire.x, H);
-        ctx.strokeStyle = `rgba(${WIRE_RGB}, 0.32)`;
+        ctx.strokeStyle = `rgba(${WIRE_RGB}, 0.20)`;
         ctx.lineWidth   = 1;
-        ctx.shadowColor = `rgba(${WIRE_RGB}, 0.42)`;
+        ctx.shadowColor = `rgba(${WIRE_RGB}, 0.28)`;
         ctx.shadowBlur  = 4;
         ctx.stroke();
         ctx.shadowBlur  = 0;
@@ -149,9 +148,9 @@ function drawFrame() {
         wire.nodes.forEach(ny => {
             ctx.beginPath();
             ctx.arc(wire.x, ny, 2.8, 0, Math.PI * 2);
-            ctx.strokeStyle = `rgba(${NODE_RGB}, 0.65)`;
+            ctx.strokeStyle = `rgba(${NODE_RGB}, 0.48)`;
             ctx.lineWidth   = 1;
-            ctx.shadowColor = `rgba(${NODE_RGB}, 0.50)`;
+            ctx.shadowColor = `rgba(${NODE_RGB}, 0.35)`;
             ctx.shadowBlur  = 3;
             ctx.stroke();
             ctx.shadowBlur  = 0;
@@ -183,7 +182,7 @@ function drawFrame() {
 
         if (opacity <= 0) return;
 
-        const blobAlpha = opacity * 0.88;
+        const blobAlpha = opacity * 0.72;
 
         // Glowing segment along the wire
         const grad = ctx.createLinearGradient(

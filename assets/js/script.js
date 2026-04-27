@@ -7,10 +7,10 @@ const SVG_NS = 'http://www.w3.org/2000/svg';
 // Section definitions (id matches anchor targets in HTML)
 const SECTIONS = [
     { id: 'collected',  ringLabel: 'Collected Data',  url: 'pages/collected.html' },
-    { id: 'collectors', ringLabel: 'Collectors'       },
-    { id: 'so-what',    ringLabel: 'So What?'         },
+    { id: 'collectors', ringLabel: 'Collectors',  url: 'pages/collectors.html' },
+    { id: 'so-what',    ringLabel: 'So What?',    url: 'pages/so-what.html'    },
     { id: 'now-what',   ringLabel: 'Now What?'        },
-    { id: 'other',      ringLabel: 'Other Section'    },
+    { id: 'other',      ringLabel: 'Coming Soon'      },
     { id: 'sources',    ringLabel: 'Ext. Sources'     },
     { id: null,         ringLabel: "I'm Lucky"        }, // random pick
 ];
